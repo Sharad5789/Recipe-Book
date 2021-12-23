@@ -1,0 +1,36 @@
+<nav class="navbar container-fluid navbar-expand-sm navbar-dark bg-dark sticky-top">
+    <a class="navbar-brand" >Recipe Book</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav">
+        <li class="nav-item" *ngIf="isAuthenticate">
+          <a class="nav-link" routerLinkActive = "active" [routerLink] = "['/recipe']">Recipes</a>
+        </li>
+        <li class="nav-item" *ngIf="!isAuthenticate">
+          <a class="nav-link" routerLinkActive = "active" [routerLink] = "['/auth']">Authenticate</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLinkActive = "active" [routerLink] = "['/shopping-list']">Shopping List</a>
+        </li>
+      </ul>
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"  *ngIf="isAuthenticate">
+          <a class="nav-link" [routerLink] = "['/auth']" (click)="onClickLogout()">Logout</a>
+        </li>
+
+        <div class="dropdown me-5"  *ngIf="isAuthenticate">
+          <button class="btn btn-dark dropdown-toggle" type="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">Manage</button>
+          <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuLink">
+            <li><a class="dropdown-item" style="cursor: pointer;"(click)="onClickSave()" >Save Recipe</a></li>
+            <li><a class="dropdown-item" style="cursor: pointer;" (click)="onClickFetch()">Fetch Recipe</a></li>
+          </ul>
+        </div>
+      </ul>
+
+
+    </div>
+</nav>
+
+  
